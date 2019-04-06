@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class='player' id='vb'>
+    <video id='vd' playsinline webkit-playsinline="true" controls style='object-fit: contain;'>
+      <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4" type="video/mp4" />
+    </video> 
+    <div class='video-status' id='log'>
+      <img src="http://wx4.sinaimg.cn/large/006ARE9vgy1fs9w9ukwjhj30g40afaap.jpg" alt="">
+    </div>
+  </div>
+</body>
+</html>
+<script src="https://cdn.bootcss.com/screenfull.js/4.1.0/screenfull.js"></script>
+<script>
+  const log = document.getElementById('log')
+  const videoBox = document.getElementById('vb')
+  log.onclick = _=> {
+    const fullFlag = videoBox.className.indexOf('full-screen')
+    if (fullFlag === -1) {
+      videoBox.setAttribute('class', 'player full-screen')
+    } else {
+      videoBox.setAttribute('class', 'player')
+    }
+    screenfull.toggle()
+  }
+</script>
+<style>
+/* reset */
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,footer,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+pre,code,kbd,samp{font-family:inherit;}
+q:before,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:bold;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,\5b8b\4f53;color:#333;outline:0;}
+body{background:#fff;}
+a,a:hover{color:#333;}
+
+.player {
+  width: 800px;
+  height: auto;
+  margin: 0 auto;
+  position: relative;
+  background-color: black;
+}
+.player video{
+  width: 100%;
+  height: 100%;
+}
+.video-status {
+  position: absolute;
+  right: 100px;
+  top: 40px;
+}
+.video-status img {
+  width: 100px;
+}
+.full-screen {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+</style>
